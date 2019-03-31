@@ -1,12 +1,14 @@
 <?php
 
-$table = 'datatable';
-$id = 'id';
+$table = 'datatable'; // your database table name
+$id = 'id'; // your database table id
 
-$aColumns = array('name','city');
+$aColumns = array('name','city'); // datatable columns array which you want in output
 
 // multiple where condition should start with AND | OR
 $where = [];
+
+//multiple join conditions
 $join = [];
 
 // accessing key as a variable which is passed through controller
@@ -14,7 +16,7 @@ $join = [];
 
 $aaColumns = array();
 
-$result = get_datatable($table,$id,$aColumns,$join,$where);
+$result = get_datatable($table,$id,$aColumns,$join,$where,[]); // last array is additional columns array for join table columns
 
 $Oresult = $result['result'];
 // $totalRecord = count_all($table);
@@ -22,8 +24,8 @@ $Oresult = $result['result'];
 
 foreach ($Oresult as $key => $value) {
 	$row = array();
-	$row[] = $value['name'];
-	$row[] = $value['city'];
+	$row[] = $value['name']; // field name of database table
+	$row[] = $value['city']; // field name of database table
 
 	$data[] = $row;
 }
